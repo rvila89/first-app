@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Person from './components/Person';
+import { PersonProvider } from './context/PersonContext';
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
           Bienvenidos a nuestra primera app en React
         </p>
       </header>
-      <Person />
+      <PersonProvider>
+        <Person />
+      </PersonProvider>
     </div>
   );
 }

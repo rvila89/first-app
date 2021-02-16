@@ -1,36 +1,33 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Hobbies from './Hobbies';
+import Count from './Count';
+import PersonContext from '../context/PersonContext';
+import CountriesList from './CountriesList';
+import { CountriesProvider } from '../context/CountriesContext';
 
-class Person extends React.Component {
-  
-  state = {
-    name: 'Roger2',
-    company: 'Atmira',
-    hobbies: ['Futbol', 'Ciclismo', 'Desarrollo Software']
-  }
+const Person = () => {
+  const [count, setCount] = useState(0)
+  const handleResetCount = () => setCount(0)
 
-  componentDidMount = () => {
-    console.log('Componente Person renderizado');
-  }
+  useEffect(() => {
+    console.log('Component Update')
+  }, [])
 
-  componentDidUpdate = () => {
-    console.log('Componente Person actualizado');
-  }
+  const { name, company, setCompany } = useContext(PersonContext)
 
-  handleCompany = () => this.setState({company: 'Everis'})
-  handleHobbies = () => this.setState({hobbies: ['Basquet', 'Natación', 'Testing']})
-
-  render() {
-    return (
-      <div className="Person">
-        <h1>{this.state.name}</h1>
-        <p>Empresa: {this.state.company}</p>
-        <button onClick={this.handleCompany}>Cambio de empresa</button>
-        <button onClick={this.handleHobbies}>Cambio de hobbies</button>
-        <Hobbies hobbies={this.state.hobbies}/>
-      </div>
-    )
-  }  
+  return (
+    <div className="Person">
+      <h1>{name}</h1>
+      <p>Empresa: {company}</p>
+      <button onClick={() => setCompany('Everis')}>Cambio de empresa</button>
+      <button onClick={handleResetCount}>Reset Count</button>
+      <Count count={count} updateCount={setCount}/>
+      <Hobbies />
+      <CountriesProvider>
+        <CountriesList />
+      </CountriesProvider>
+    </div>
+  ) 
 }
 
 export default Person;

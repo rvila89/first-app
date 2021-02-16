@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PersonContext from '../context/PersonContext';
 
-const Hoobies = (props) => {
-  console.log('Componente Hobbie renderizado')
+const Hoobies = () => {
+  const {hobbies, updateHobbies} = useContext(PersonContext)
+
   return (
     <div>
       <h3>Hobbies: </h3>
       <ul>
         {
-          props.hobbies.map(hobbie => <li key={`key-${hobbie}`}>{hobbie}</li>)
+          hobbies.map(hobbie => <li key={`key-${hobbie}`}>{hobbie}</li>)
         }
       </ul>
+      <button onClick={() => updateHobbies(['Basquet', 'Natación', 'Testing'])}>Cambiar hoobies</button>
     </div>
   )
 }
