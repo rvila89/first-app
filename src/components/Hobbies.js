@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
 import PersonContext from '../context/PersonContext';
+import AddHobbiesForm from './AddHobbiesForm';
 
 const Hoobies = () => {
   const {hobbies, updateHobbies} = useContext(PersonContext)
+  const handleHobbies = (hobbie) => {
+    updateHobbies(hobbies => [...hobbies, hobbie]) 
+  }
 
   return (
     <div>
@@ -12,7 +16,8 @@ const Hoobies = () => {
           hobbies.map(hobbie => <li key={`key-${hobbie}`}>{hobbie}</li>)
         }
       </ul>
-      <button onClick={() => updateHobbies(['Basquet', 'Natación', 'Testing'])}>Cambiar hoobies</button>
+      <button className="btn btn-primary" onClick={() => updateHobbies(['Basquet', 'Natación', 'Testing'])}>Cambiar hoobies</button>
+      <AddHobbiesForm handleHobbies={handleHobbies}/>
     </div>
   )
 }

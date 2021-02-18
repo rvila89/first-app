@@ -19,8 +19,8 @@ const Person = () => {
     <div className="Person">
       <h1>{name}</h1>
       <p>Empresa: {company}</p>
-      <button onClick={() => setCompany('Everis')}>Cambio de empresa</button>
-      <button onClick={handleResetCount}>Reset Count</button>
+      <button className="btn btn-primary m-2" onClick={() => setCompany('Everis')}>Cambio de empresa</button>
+      <button className="btn btn-primary m-2" onClick={handleResetCount}>Reset Count</button>
       <Count count={count} updateCount={setCount}/>
       <Hobbies />
       <CountriesProvider>
