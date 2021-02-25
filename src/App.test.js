@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('This is for group of test cases', () => {
+  test('description1', () => {
+    expect(true).toBe(true);
+  })
+  test('description2', () => {
+    expect(true).toBe(true);
+  })
+})
+
+
